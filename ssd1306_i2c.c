@@ -772,6 +772,36 @@ void ssd1306_drawString(char *str)
 		ssd1306_write(str[i]);
 }
 
+void ssd1306_drawText(int x, int y, char *str)
+{
+	int i, end;
+	end = strlen(str);
+	int point_x = x;
+	int point_y = y;
+	for (i = 0; i < end; i++)
+	{
+		if (str[i] == '\n')
+		{
+			point_y += textsize * 8;
+			point_x = 0;
+		}
+		else if (str[i] == '\r')
+		{
+			// skip em
+		}
+		else
+		{
+			ssd1306_drawChar(point_x, point_y, str[i], WHITE, textsize);
+			point_x += textsize * 6;
+			if (wrap && (point_x > (WIDTH - textsize * 6)))
+			{
+				point_y += textsize * 8;
+				point_x = 0;
+			}
+		}
+	}
+}
+
 // Draw a character
 void ssd1306_drawChar(int x, int y, unsigned char c, int color, int size)
 {

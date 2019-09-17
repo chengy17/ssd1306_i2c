@@ -159,6 +159,7 @@ void ssd1306_fillRect(int x, int y, int w, int h, int fillcolor);
 
 void ssd1306_setTextSize(int s);
 void ssd1306_drawString(char *str);
+void ssd1306_drawText(int x, int y, char *str);
 void ssd1306_drawChar(int x, int y, unsigned char c, int color, int size);
 
 #endif				/* _SSD1306_I2C_H_ */
