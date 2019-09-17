@@ -12,5 +12,6 @@ gcc demo.c ssd1306_i2c.c -lwiringPi -o demo
 
 ./demo
 
-
-
+How to run oled, show CPU state, Ram, IP etc of Raspberry Pi:
+gcc -o oled oled.c ssd1306_i2c.c -lwiringPi
+./oled
